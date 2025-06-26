@@ -4,7 +4,7 @@ globs:
 alwaysApply: false
 ---
 > Ejecuta la Fase X del PDA para No One's Heart según el documento docs/PDA.md.
-> - Si se considera que faltan elementos para ejecutar la Fase X, informarlos por chat y pedir confirmación antes de avanzar.
+
 > - Explica brevemente los objetivos y entregables de la fase.
 > - Detalla los pasos a seguir y los archivos/código que vas a crear o modificar.
 > - Indica cualquier requerimiento previo o dependencias.

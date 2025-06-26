@@ -1,5 +1,32 @@
 ---
-description:
-globs:
-alwaysApply: false
+description: 
+globs: 
+alwaysApply: true
 ---
+# Custom Rules
+
+Rules that are specific for this project. Specific practices that MUST be kept in mind when developing.
+
+## Rendering
+
+The game is ment to be in a style like the game "Forgive Father" where it's like a 2.5D (A world in 3d, but most entities are sprites looking at the camera), but it is in a 3rd person perspective.
+
+## Language
+
+- Always keep in mind a system for language. The game at minimum MUST be in ENGLISH and/or SPANISH.
+- Make every wording config in a .csv file. Mantaining a key and a value for every language.
+- Make it flexible, in case we wanna add more languages in the future.
+
+## Coding
+
+- Avoid making files longer than 500 lines of code. In that case, apply refactor, modularize, make reusable methods and implement a utils folder if necessary.
+- Always fix Linter errors, avoid disabling linter.
+- Always fix syntax errors and warning appearing in the code editor.
+
+## GDD
+
+- NEVER modify this file, except it's explicitly asked that.
+
+## External Assets
+
+- Always look for assets in the godot assetStore that can facilitate the developing task. NEVEr implement without asking the user for permission. In that case, explain detailing why it's a good asset to implement.
