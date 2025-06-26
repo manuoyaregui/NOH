@@ -1,0 +1,1 @@
+"# No One's Heart\n\nProyecto desarrollado en Godot 4.4+\n\n## Estructura\n- /scenes: Escenas Godot\n- /scripts: Scripts GDScript\n- /assets: Recursos gr ficos y audio\n- /data: Configuraci¢n y localizaci¢n"  

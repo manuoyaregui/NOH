@@ -1,0 +1,114 @@
+# ⚙️ Reglas de CursorAI para el proyecto *No One's Heart*
+
+Estas reglas están diseñadas para guiar a CursorAI en la implementación técnica y creativa del proyecto *No One's Heart*, asegurando coherencia con su visión narrativa, estética y mecánica.
+
+---
+
+## 🔧 Reglas Técnicas
+
+1. **Motor de desarrollo**: Todo debe realizarse en **Godot 4.4** usando **GDScript**.
+
+2. **Estilo visual**: Tercera persona en un mundo 3D(2.5D). Los enemigos se representan como **Sprite3D** con `billboard` activado, para simular una estética 2.5D.
+
+3. **Modularidad**: Cada sistema (combate, mapa, UI, IA, narrativa) debe implementarse como **módulo autocontenible**, con clases exportables y reutilizables.
+
+4. **Persistencia**: Todos los datos de jugador y progresión deben guardarse en **archivos JSON** (`progreso_global.json`, `run_actual.json`, etc.).
+
+5. **Traducción**: Todos los textos visibles deben cargarse desde un archivo `.csv` llamado `localization.csv` con columnas `key`, `en`, `es`. No debe haber texto hardcodeado.
+
+6. **Sistema de idioma**:
+
+   * Idioma por defecto: inglés.
+   * Debe poder cambiarse en cualquier momento desde opciones.
+   * La traducción debe reflejarse en tiempo real (sin reiniciar escena).
+
+---
+
+## 🧠 Reglas de IA
+
+7. **Perfil de IA**: Los enemigos deben usar una de estas personalidades:
+
+   * `AGRESIVO`: prioriza ataques directos.
+   * `DEFENSIVO`: prioriza protección o debuffs.
+   * `TÁCTICO`: toma decisiones basadas en el estado del jugador.
+   * `EQUILIBRADO`: toma decisiones variadas.
+
+8. **Evaluación contextual**: La IA no debe actuar aleatoriamente. Siempre debe evaluar salud, estados, stats del jugador y propia, y tipo de combate. Solo se comportará de manera aleatoria cuando todas las acciones generen el mismo resultado.
+
+9. **Escalado**: La complejidad de decisiones debe escalar con el "nivel de oponente".
+
+---
+
+## 🧪 Reglas de Combate
+
+**Modelo de Turno (IMPORTANTE):**
+El sistema de combate se basa en una estructura simultánea, no alternada. Esto significa:
+
+* Primero, el jugador y el enemigo **eligen su acción al mismo tiempo**.
+* Luego, se determina el **orden de ejecución** (por prioridad, agilidad u otro modificador).
+* Finalmente, ambas acciones se ejecutan en orden en el mismo turno.
+
+Ejemplo: El jugador lanza un ataque rápido (alta prioridad), el enemigo lanza un ataque poderoso (baja prioridad). El ataque del jugador se resuelve primero.
+
+10. **Controlador de combate**: Debe implementar una FSM adaptada a turnos simultáneos con los siguientes estados:
+
+* `InicioTurno`: Preparación y reseteo de efectos temporales.
+* `ElecciónJugador`: El jugador elige su acción.
+* `ElecciónIA`: La IA elige su acción.
+* `ResoluciónTurno`: Se comparan ambas acciones y se ejecutan en orden definido por prioridad/agilidad.
+* `FinTurno`: Se aplican consecuencias, se actualizan stats, y se pasa al siguiente ciclo.
+
+11. **Tendencias (stats emocionales)**:
+
+* Cada acción modifica el nivel de al menos uno de estos stats `Osadía`, `Dureza`, `Moral` y `Agilidad`.
+* Estos stats afectan el resultado del combate y bloquean/permiten ciertas cartas/movimientos.
+
+12. **Acciones y cartas**:
+
+* Toda acción se ejecuta a través de una **carta** o **movimiento**.
+* Las cartas deben tener campos: nombre, tipo, coste, efecto, condición especial, penalidad.
+* Las consecuencias deben estar siempre equilibradas con la ventaja.
+
+13. **Anti-spam**: No debe permitirse usar una misma acción infinitamente. Implementar restricciones por turno, fatiga, o costos adicionales.
+
+---
+
+## 🗺️ Reglas de Run y Mapa
+
+14. **Nodos del mapa**: Todos deben implementarse como instancias del tipo `NodoDeMapa`, que incluyan tipo, ícono, conexión, referencia a evento/combate.
+
+15. **Guardado**:
+
+* Guardar automáticamente al elegir un nodo.
+* Si el jugador muere, eliminar el archivo de guardado.
+* No se permite reintentar combates anteriores (permadeath).
+
+---
+
+## 🎨 Reglas de Arte y UX
+
+16. **Estética**: Visual oscura, melancólica y simbolista. Inspiración: carboncillo, ilustración artesanal, luz tenue y texturas naturales.
+
+17. **Sonido**: Uso de piano ambiental, distorsiones suaves, silencio como herramienta emocional, efectos minimalistas.
+
+18. **UI**: Minimalista. Mostrar siempre:
+
+* Stats emocionales con iconografía.
+* Intención del enemigo.
+* Descripción de cada carta al pasar el cursor.
+
+19. **Tutorial**: Incluir una run guiada para enseñar mecánicas de forma progresiva, dividida en nodos fijos.
+
+---
+
+## ❌ Restricciones clave
+
+20. **No improvisar mecánicas**: No crear nuevas reglas o sistemas si no están definidos en el GDD. Solo sugerir mejoras si se pide explícitamente.
+
+21. **No texto hardcodeado**: Ningún string debe estar escrito en el código fuente sin pasar por `localization.csv`.
+
+22. **No lógica monolítica**: No juntar controladores múltiples (combate + UI + lógica de cartas). Separar todo en scripts pequeños y bien nombrados.
+
+---
+
+Este set de reglas garantiza que CursorAI trabaje en sincronía con la narrativa, las mecánicas y el ritmo de desarrollo de *No One's Heart*.

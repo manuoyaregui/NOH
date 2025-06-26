@@ -1,0 +1,10 @@
+; Engine configuration file.
+; It's best edited using the Godot editor.
+; Format version 4
+
+[application]
+config/name="No One's Heart"
+config/icon=""
+
+[rendering]
+quality/intended_usage/framebuffer_allocation=2 

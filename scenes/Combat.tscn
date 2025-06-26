@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[node name="Combat" type="Node3D"]
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D.IDENTITY.translated(Vector3(-2, 0, 0))
+
+[node name="PlayerSprite" type="AnimatedSprite3D" parent="Player"]
+
+[node name="Opponent" type="CharacterBody3D" parent="."]
+transform = Transform3D.IDENTITY.translated(Vector3(2, 0, 0))
+
+[node name="OpponentSprite" type="AnimatedSprite3D" parent="Opponent"]
+
+[node name="Battlefield" type="MeshInstance3D" parent="."]
+mesh = SubResource( 1 )
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D.IDENTITY.translated(Vector3(0, 5, 10)).looking_at(Vector3(0,0,0), Vector3.UP)
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2(8, 4) 
