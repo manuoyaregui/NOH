@@ -1,22 +1,215 @@
-[gd_scene format=3]
+[gd_scene load_steps=27 format=3 uid="uid://bhd26scwo1d3w"]
+
+[ext_resource type="Texture2D" uid="uid://smddh825hbni" path="res://assets/prototyping/FREE_Samurai 2D Pixel Art v1.2/Sprites/IDLE.png" id="1_4r6s1"]
+[ext_resource type="Texture2D" uid="uid://82s2p7jhu4sa" path="res://assets/prototyping/3dModeling/PNG/Purple/texture_01.png" id="2_k070p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k070p"]
+atlas = ExtResource("1_4r6s1")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrlpu"]
+atlas = ExtResource("1_4r6s1")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qy8o"]
+atlas = ExtResource("1_4r6s1")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp2sa"]
+atlas = ExtResource("1_4r6s1")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akg4l"]
+atlas = ExtResource("1_4r6s1")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70oqa"]
+atlas = ExtResource("1_4r6s1")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mak3c"]
+atlas = ExtResource("1_4r6s1")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3q7sh"]
+atlas = ExtResource("1_4r6s1")
+region = Rect2(672, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spaix"]
+atlas = ExtResource("1_4r6s1")
+region = Rect2(768, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t74xm"]
+atlas = ExtResource("1_4r6s1")
+region = Rect2(864, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_felwx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k070p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrlpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qy8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tp2sa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akg4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70oqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mak3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3q7sh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spaix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t74xm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r6s1"]
+atlas = ExtResource("1_4r6s1")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_felwx"]
+atlas = ExtResource("1_4r6s1")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acsaf"]
+atlas = ExtResource("1_4r6s1")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8jxt"]
+atlas = ExtResource("1_4r6s1")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_132iy"]
+atlas = ExtResource("1_4r6s1")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjsle"]
+atlas = ExtResource("1_4r6s1")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fq1n"]
+atlas = ExtResource("1_4r6s1")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4pb0"]
+atlas = ExtResource("1_4r6s1")
+region = Rect2(672, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13pag"]
+atlas = ExtResource("1_4r6s1")
+region = Rect2(768, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_040v5"]
+atlas = ExtResource("1_4r6s1")
+region = Rect2(864, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xuxku"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r6s1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_felwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acsaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8jxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_132iy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjsle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fq1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4pb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13pag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_040v5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k070p"]
+albedo_texture = ExtResource("2_k070p")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_acsaf"]
+size = Vector2(2.5, 2.5)
 
 [node name="Combat" type="Node3D"]
 
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D.IDENTITY.translated(Vector3(-2, 0, 0))
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.298585, 0, 0.823698)
 
 [node name="PlayerSprite" type="AnimatedSprite3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.333344, 0.751)
+billboard = 1
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_felwx")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.425796
 
 [node name="Opponent" type="CharacterBody3D" parent="."]
-transform = Transform3D.IDENTITY.translated(Vector3(2, 0, 0))
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164228, 0, 1)
 
 [node name="OpponentSprite" type="AnimatedSprite3D" parent="Opponent"]
-
-[node name="Battlefield" type="MeshInstance3D" parent="."]
-mesh = SubResource( 1 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.394, 0.333, 0)
+flip_h = true
+modulate = Color(0.941176, 0.266667, 0.435294, 1)
+billboard = 1
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_xuxku")
+autoplay = "default"
+frame_progress = 0.423276
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D.IDENTITY.translated(Vector3(0, 5, 10)).looking_at(Vector3(0,0,0), Vector3.UP)
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0.5, 2.145)
+fov = 73.3
 
-[sub_resource type="PlaneMesh" id=1]
-size = Vector2(8, 4) 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.84173, 0, 0, 0, 1, 0, 0, 0, 4.61637, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_k070p")
+mesh = SubResource("PlaneMesh_acsaf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.504769, -0.186151, 0.842945, 0, 0.976473, 0.215639, -0.863255, -0.108848, 0.492893, -0.213185, 1.76273, -7.58055)
+light_color = Color(0.75, 0.525, 0.1875, 1)
+light_energy = 1.96
+shadow_enabled = true
+shadow_reverse_cull_face = true
+shadow_blur = 0.0
