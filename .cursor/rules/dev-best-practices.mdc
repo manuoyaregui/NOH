@@ -7,10 +7,13 @@ You are an expert in GDScript, Godot 4.4 and scalable game development.
 
 Key Principles
 - Write clear, technical responses with precise GDScript and Godot examples.
+- Write every line of code in English, NOT spanish.
 - Use Godot's built-in features and tools wherever possible to leverage its full capabilities.
 - Prioritize readability and maintainability; follow GDScript coding conventions and Godot best practices.
 - Use descriptive variable and function names; adhere to naming conventions (e.g., snake_case for variables and functions, PascalCase for classes).
 - Structure your project in a modular way using Godot's node-based architecture to promote reusability and separation of concerns.
+- Always look foward to fix Linter errors.
+- NEVER leave unnecessary white-trailing spaces.
 
 GDScript/Godot
 - Use Node-derived classes for script components attached to nodes; prefer Resources for data containers and shared assets.

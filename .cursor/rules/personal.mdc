@@ -3,6 +3,7 @@ description:
 globs: 
 alwaysApply: true
 ---
+
 # Custom Rules
 
 Rules that are specific for this project. Specific practices that MUST be kept in mind when developing.
@@ -20,6 +21,7 @@ The game is ment to be in a style like the game "Forgive Father" where it's like
 ## Coding
 
 - Avoid making files longer than 500 lines of code. In that case, apply refactor, modularize, make reusable methods and implement a utils folder if necessary.
+- Always use SOLID principles.
 - Always fix Linter errors, avoid disabling linter.
 - Always fix syntax errors and warning appearing in the code editor.
 
