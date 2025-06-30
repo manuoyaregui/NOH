@@ -1,0 +1,42 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Godot Project",
+            "type": "shell",
+            "command": "godot",
+            "args": [
+                "--path",
+                "${workspaceFolder}",
+                "--headless"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Export Project",
+            "type": "shell",
+            "command": "godot",
+            "args": [
+                "--headless",
+                "--export",
+                "Windows Desktop",
+                "${workspaceFolder}/build/game.exe"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "EddieDover.gdscript-formatter-linter",
+        "ms-vscode.vscode-json",
+        "redhat.vscode-yaml",
+        "ms-vscode.vscode-typescript-next",
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-eslint"
+    ]
+}
