@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3]
+
+[node name="PlayerHealthBillboard" type="Label3D"]
+text = "HP: 100"
+h_align = 1
+vertical_alignment = 1
+billboard = 1

@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://ojye6tam5rjm"]
+
+[ext_resource type="Script" uid="uid://bxmleco4631a7" path="res://scripts/ui/CombatUI.gd" id="1_k0kdm"]
+
+[node name="CombatUI" type="CanvasLayer"]
+script = ExtResource("1_k0kdm")
+
+[node name="MovesPanel" type="MarginContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MovesContainer" type="VBoxContainer" parent="MovesPanel"]
+layout_mode = 2
+
+[node name="CombatLogPanel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_top = 0.7
+anchor_right = 0.4
+anchor_bottom = 1.0
+offset_top = 0.399994
+offset_right = 368.2
+
+[node name="CombatLog" type="RichTextLabel" parent="CombatLogPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0

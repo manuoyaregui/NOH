@@ -16,6 +16,10 @@ var turn_order: Array[CombatEntity] = []
 var combat_state: String = "idle"  # idle, active, ended
 var victory_rewards: Array = []
 
+@onready var combat_ui = get_parent().get_node("CombatUI")
+@onready var player_health_billboard = player.get_node("HealthBar")
+@onready var enemy_health_billboard = enemy.get_node("HealthBar")
+
 
 func _ready():
 	# Add to combat scene group for easy access
@@ -26,6 +30,11 @@ func _ready():
 		player.entity_died.connect(_on_entity_died)
 	if enemy:
 		enemy.entity_died.connect(_on_entity_died)
+
+	combat_ui.set_moves(player.get_available_moves())
+	combat_ui.move_selected.connect(_on_move_selected)
+	_update_health_billboards()
+	combat_ui.add_log_message("Combat started!")
 
 
 func start_combat():
@@ -130,3 +139,13 @@ func is_player_turn() -> bool:
 func force_end_combat(victory: bool = false):
 	combat_state = "ended"
 	combat_ended.emit(victory, victory_rewards)
+
+
+func _on_move_selected(move_id):
+	# Lógica para manejar la selección de movimiento
+	combat_ui.add_log_message("Player selected move: %s" % move_id)
+
+
+func _update_health_billboards():
+	player_health_billboard.set_health(player.current_health, player.max_health)
+	enemy_health_billboard.set_health(enemy.current_health, enemy.max_health)
