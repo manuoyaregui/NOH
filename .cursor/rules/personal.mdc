@@ -1,6 +1,6 @@
 ---
-description: 
-globs: 
+description:
+globs:
 alwaysApply: true
 ---
 
@@ -24,6 +24,7 @@ The game is ment to be in a style like the game "Forgive Father" where it's like
 - Always use SOLID principles.
 - Always fix Linter errors, avoid disabling linter.
 - Always fix syntax errors and warning appearing in the code editor.
+- Always code leaving blank lines in order to improve readability.
 
 ## GDD
 
