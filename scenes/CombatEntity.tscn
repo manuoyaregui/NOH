@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://d3voreb4hjkub"]
 
 [ext_resource type="Texture2D" uid="uid://smddh825hbni" path="res://assets/prototyping/FREE_Samurai 2D Pixel Art v1.2/Sprites/IDLE.png" id="1_4r6s1"]
-[ext_resource type="Script" path="res://scripts/entities/HealthBillboard.gd" id="2_2m65d"]
+[ext_resource type="Script" uid="uid://i2xlwewnf7so" path="res://scripts/entities/HealthBillboard.gd" id="2_2m65d"]
 [ext_resource type="Script" uid="uid://dhboukmmf25aj" path="res://scripts/entities/CombatEntity.gd" id="2_combat_entity"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_default"]
