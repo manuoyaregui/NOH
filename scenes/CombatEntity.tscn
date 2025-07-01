@@ -35,10 +35,10 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="EntityName" type="Label3D" parent="PlayerSprite"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154249, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0859099, 0)
 billboard = 1
 shaded = true
-texture_filter = 4
+texture_filter = 0
 text = "default_entity_name"
 font_size = 14
 outline_size = 8
