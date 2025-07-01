@@ -5,6 +5,8 @@ signal combat_started
 signal combat_ended(victory: bool, rewards: Array)
 signal turn_started(entity: CombatEntity)
 signal turn_ended(entity: CombatEntity)
+signal entity_damaged(entity_id, new_health)
+signal entity_name_changed(entity_id, new_name)
 
 @export var player: CombatEntity
 @export var enemy: CombatEntity
@@ -16,6 +18,8 @@ var turn_order: Array[CombatEntity] = []
 var combat_state: String = "idle"  # idle, active, ended
 var victory_rewards: Array = []
 
+@onready var combat_ui = get_parent().get_node("CombatUI")
+
 
 func _ready():
 	# Add to combat scene group for easy access
@@ -26,6 +30,17 @@ func _ready():
 		player.entity_died.connect(_on_entity_died)
 	if enemy:
 		enemy.entity_died.connect(_on_entity_died)
+
+	set_entity_name(player, player.entity_name)
+	set_entity_name(enemy, enemy.entity_name)
+
+	combat_ui.set_moves(player.get_available_moves())
+	combat_ui.move_selected.connect(_on_move_selected)
+
+	_update_health_billboards(player, player.current_health)
+	_update_health_billboards(enemy, enemy.current_health)
+
+	combat_ui.add_log_message("Combat started!")
 
 
 func start_combat():
@@ -110,7 +125,7 @@ func check_combat_end() -> bool:
 	return false
 
 
-func _on_entity_died(entity: CombatEntity):
+func _on_entity_died(_entity: CombatEntity):
 	# This will be handled by check_combat_end in the next turn
 	pass
 
@@ -130,3 +145,22 @@ func is_player_turn() -> bool:
 func force_end_combat(victory: bool = false):
 	combat_state = "ended"
 	combat_ended.emit(victory, victory_rewards)
+
+
+func _on_move_selected(move_id):
+	# Lógica para manejar la selección de movimiento
+	combat_ui.add_log_message("Player selected move: %s" % move_id)
+
+
+func apply_damage(entity: CombatEntity, damage: int):
+	var new_health_value = entity.current_health - damage
+	_update_health_billboards(entity, new_health_value)
+
+
+func _update_health_billboards(entity: CombatEntity, new_value: int):
+	emit_signal("entity_damaged", entity, new_value)
+
+
+func set_entity_name(entity: CombatEntity, new_name: String):
+	# Aquí se asignaría el nombre real a la entidad
+	emit_signal("entity_name_changed", entity, new_name)
