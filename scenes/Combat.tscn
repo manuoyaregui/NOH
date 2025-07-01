@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhd26scwo1d3w"]
+[gd_scene load_steps=7 format=3 uid="uid://bhd26scwo1d3w"]
 
 [ext_resource type="PackedScene" uid="uid://ojye6tam5rjm" path="res://scenes/CombatUI.tscn" id="1_hrlpu"]
 [ext_resource type="Texture2D" uid="uid://82s2p7jhu4sa" path="res://assets/prototyping/3dModeling/PNG/Purple/texture_01.png" id="1_k070p"]
+[ext_resource type="Script" uid="uid://x7knrb8ph14q" path="res://scripts/combat/CombatVisualManager.gd" id="2_0qy8o"]
 [ext_resource type="Script" uid="uid://c77ako4xp5ne1" path="res://scripts/combat/CombatManager.gd" id="2_combat_manager"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k070p"]
@@ -15,11 +16,14 @@ size = Vector2(2.5, 2.5)
 
 [node name="CombatUI" parent="." instance=ExtResource("1_hrlpu")]
 
+[node name="CombatVisualManager" type="Node" parent="."]
+script = ExtResource("2_0qy8o")
+
 [node name="CombatManager" type="Node" parent="."]
 script = ExtResource("2_combat_manager")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0.5, 2.145)
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0.5, 1.3103)
 fov = 73.3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
