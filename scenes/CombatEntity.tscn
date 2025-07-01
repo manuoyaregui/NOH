@@ -34,87 +34,18 @@ sprite_frames = SubResource("SpriteFrames_default")
 animation = &"idle"
 autoplay = "idle"
 
+[node name="EntityName" type="Label3D" parent="PlayerSprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154249, 0)
+billboard = 1
+shaded = true
+texture_filter = 4
+text = "default_entity_name"
+font_size = 14
+outline_size = 8
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_combat_entity")
-
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -25.0
-offset_right = 50.0
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HealthBar" type="ProgressBar" parent="UI"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 20.0
-grow_horizontal = 2
-value = 100.0
-show_percentage = false
-
-[node name="EnergyBar" type="ProgressBar" parent="UI"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 25.0
-offset_bottom = 45.0
-grow_horizontal = 2
-value = 100.0
-show_percentage = false
-
-[node name="NameLabel" type="Label" parent="UI"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -120.0
-offset_right = 25.0
-offset_bottom = -100.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Entity"
-horizontal_alignment = 1
-
-[node name="StatusEffects" type="Control" parent="UI"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = 50.0
-offset_right = 30.0
-offset_bottom = 80.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="EffectsContainer" type="HBoxContainer" parent="UI/StatusEffects"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -15.0
-offset_top = -15.0
-offset_right = 15.0
-offset_bottom = 15.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

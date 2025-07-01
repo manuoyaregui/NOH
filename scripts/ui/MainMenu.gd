@@ -1,6 +1,10 @@
 class_name MainMenu
 extends Control
 
+const IDLE_SPRITE = preload(
+	"res://assets/prototyping/FREE_Samurai 2D Pixel Art v1.2/Sprites/IDLE.png"
+)
+
 @onready var start_combat_button: Button = $VBoxContainer/StartCombatButton
 
 
@@ -52,14 +56,23 @@ func _create_test_combat() -> Node:
 
 	# Create sprite frames for player
 	var player_sprite_frames = SpriteFrames.new()
-	var idle_texture = preload(
-		"res://assets/prototyping/FREE_Samurai 2D Pixel Art v1.2/Sprites/IDLE.png"
-	)
-	var idle_atlas = AtlasTexture.new()
-	idle_atlas.atlas = idle_texture
-	idle_atlas.region = Rect2(0, 0, 96, 96)
+
+	# Configure idle animation with multiple frames
 	player_sprite_frames.add_animation("idle")
-	player_sprite_frames.add_frame("idle", idle_atlas)
+	player_sprite_frames.set_animation_speed("idle", 10.0)  # 10 FPS
+	player_sprite_frames.set_animation_loop("idle", true)  # Loop enabled
+
+	# Add frames for idle animation (assuming 4 frames horizontally)
+	var frame_width = 96
+	var frame_height = 96
+	var total_frames = 10  # Typical idle animation frames
+
+	for i in range(total_frames):
+		var idle_atlas = AtlasTexture.new()
+		idle_atlas.atlas = IDLE_SPRITE
+		idle_atlas.region = Rect2(i * frame_width, 0, frame_width, frame_height)
+		player_sprite_frames.add_frame("idle", idle_atlas)
+
 	player_data.sprite_frames = player_sprite_frames
 
 	# Create basic stats
@@ -80,11 +93,25 @@ func _create_test_combat() -> Node:
 
 	# Create sprite frames for enemy (using different color modulation)
 	var enemy_sprite_frames = SpriteFrames.new()
-	var enemy_idle_atlas = AtlasTexture.new()
-	enemy_idle_atlas.atlas = idle_texture
-	enemy_idle_atlas.region = Rect2(0, 0, 96, 96)
+
+	# Configure idle animation with multiple frames
 	enemy_sprite_frames.add_animation("idle")
-	enemy_sprite_frames.add_frame("idle", enemy_idle_atlas)
+	enemy_sprite_frames.set_animation_speed("idle", 10.0)  # 10 FPS
+	enemy_sprite_frames.set_animation_loop("idle", true)  # Loop enabled
+
+	# Add frames for idle animation (assuming 4 frames horizontally)
+	var enemy_frame_width = 96
+	var enemy_frame_height = 96
+	var enemy_total_frames = 10  # Typical idle animation frames
+
+	for i in range(enemy_total_frames):
+		var enemy_idle_atlas = AtlasTexture.new()
+		enemy_idle_atlas.atlas = IDLE_SPRITE
+		enemy_idle_atlas.region = Rect2(
+			i * enemy_frame_width, 0, enemy_frame_width, enemy_frame_height
+		)
+		enemy_sprite_frames.add_frame("idle", enemy_idle_atlas)
+
 	enemy_data.sprite_frames = enemy_sprite_frames
 	enemy_data.color_modulation = Color.RED  # Make enemy red to distinguish
 
