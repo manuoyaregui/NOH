@@ -18,7 +18,6 @@ static func create_player(player_data: Resource) -> Node:
 	entity.stats = player_data.stats.duplicate()
 	entity.max_health = player_data.max_health
 	entity.current_health = player_data.current_health
-	entity.current_energy = player_data.current_energy
 	entity.experience_level = player_data.experience_level
 
 	# Configure position and transform

@@ -3,10 +3,10 @@
 [sub_resource type="MoveData" id="MoveData_1"]
 move_name = "Basic Attack"
 move_type = 0
-energy_cost = 0
 damage = 15
 defense = 0
+accuracy = 100
 special_effects = []
 animation_name = "attack"
 cooldown_turns = 0
-target_type = "SINGLE" 
+target_type = "SINGLE"

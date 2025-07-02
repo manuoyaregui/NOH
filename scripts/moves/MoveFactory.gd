@@ -32,13 +32,11 @@ static func create_default_moves() -> Array[Move]:
 	basic_attack.move_name = "Basic Attack"
 	basic_attack.move_type = MoveData.MoveType.OFFENSIVE
 	basic_attack.damage = 10
-	basic_attack.energy_cost = 0
 
 	var basic_defend = MoveData.new()
 	basic_defend.move_name = "Defend"
 	basic_defend.move_type = MoveData.MoveType.DEFENSIVE
 	basic_defend.defense = 5
-	basic_defend.energy_cost = 0
 
 	return create_moves([basic_attack, basic_defend])
 

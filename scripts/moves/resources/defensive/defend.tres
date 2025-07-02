@@ -3,10 +3,9 @@
 [sub_resource type="MoveData" id="MoveData_3"]
 move_name = "Defend"
 move_type = 1
-energy_cost = 0
 damage = 0
 defense = 10
 special_effects = []
 animation_name = "defend"
 cooldown_turns = 0
-target_type = "SELF" 
+target_type = "SELF"

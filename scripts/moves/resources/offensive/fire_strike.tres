@@ -3,10 +3,10 @@
 [sub_resource type="MoveData" id="MoveData_2"]
 move_name = "Fire Strike"
 move_type = 0
-energy_cost = 20
 damage = 25
 defense = 0
+accuracy = 90
 special_effects = ["BURN"]
 animation_name = "fire_attack"
 cooldown_turns = 2
-target_type = "SINGLE" 
+target_type = "SINGLE"

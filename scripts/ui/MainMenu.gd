@@ -49,7 +49,6 @@ func _create_test_combat() -> Node:
 	player_data.entity_name = "Test Player"
 	player_data.max_health = 100
 	player_data.current_health = 100
-	player_data.current_energy = 100
 	player_data.experience_level = 1
 	player_data.combat_position = Vector3(-0.5, 0.0, 0.333)
 	player_data.flip_horizontal = false
@@ -126,13 +125,11 @@ func _create_test_combat() -> Node:
 	basic_attack.move_name = "Basic Attack"
 	basic_attack.move_type = MoveData.MoveType.OFFENSIVE
 	basic_attack.damage = 15
-	basic_attack.energy_cost = 0
 
 	var defend = MoveData.new()
 	defend.move_name = "Defend"
 	defend.move_type = MoveData.MoveType.DEFENSIVE
 	defend.defense = 10
-	defend.energy_cost = 0
 
 	player_data.moves = [basic_attack, defend] as Array[MoveData]
 	enemy_data.moves = [basic_attack, defend] as Array[MoveData]

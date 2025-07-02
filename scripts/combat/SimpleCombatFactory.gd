@@ -39,7 +39,7 @@ static func _convert_to_entity_data(
 		if simple_config.current_health > 0
 		else simple_config.max_health
 	)
-	entity_data.current_energy = simple_config.current_energy
+
 	entity_data.experience_level = simple_config.level
 	entity_data.combat_position = simple_config.position
 	entity_data.flip_horizontal = simple_config.flip_horizontal

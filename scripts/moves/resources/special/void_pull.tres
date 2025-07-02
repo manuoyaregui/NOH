@@ -3,10 +3,9 @@
 [sub_resource type="MoveData" id="MoveData_5"]
 move_name = "Void Pull"
 move_type = 2
-energy_cost = 30
 damage = 0
 defense = 0
 special_effects = ["VOID_PULL"]
 animation_name = "void_pull"
 cooldown_turns = 4
-target_type = "SINGLE" 
+target_type = "SINGLE"

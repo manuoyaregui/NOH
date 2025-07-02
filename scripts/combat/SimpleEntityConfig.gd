@@ -5,7 +5,6 @@ extends Resource
 @export var sprite_preset: String = "samurai_idle"
 @export var max_health: int = 100
 @export var current_health: int = -1  # Si es -1, usar max_health en la factory
-@export var current_energy: int = 100
 @export var level: int = 1
 @export var position: Vector3 = Vector3.ZERO
 @export var flip_horizontal: bool = false

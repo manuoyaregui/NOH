@@ -3,16 +3,14 @@ extends Node3D
 
 signal move_executed(move: Move, caster: CombatEntity, target: CombatEntity)
 signal health_changed(current_health: int, max_health: int)
-signal energy_changed(current_energy: int, max_energy: int)
 signal entity_died(entity: CombatEntity)
 
 @export var entity_name: String = "Entity"
 @export var is_player: bool = false
 @export var max_health: int = 100
-@export var max_energy: int = 100
 
 var current_health: int
-var current_energy: int
+
 var experience_level: int = 1
 var stats: CharacterStats
 var moves: Array[Move] = []
@@ -29,7 +27,7 @@ var region_affiliation: String = ""
 
 func _ready():
 	current_health = max_health
-	current_energy = max_energy
+
 	if stats == null:
 		stats = CharacterStats.new()
 
@@ -127,17 +125,13 @@ func reset_all_cooldowns() -> void:
 		move.current_cooldown = 0
 
 
-func add_temporary_move(move: Move, duration: int) -> void:
+func add_temporary_move(move: Move, _duration: int) -> void:
 	moves.append(move)
 	# El movimiento se removerá después de la duración especificada
 
 
 func get_health_percentage() -> float:
 	return float(current_health) / float(max_health)
-
-
-func get_energy_percentage() -> float:
-	return float(current_energy) / float(max_energy)
 
 
 func is_alive() -> bool:
