@@ -38,7 +38,7 @@ static func create_combat_scene(config: CombatConfig) -> Node:
 	# AudioFactory.setup_combat_audio(combat_scene, config)
 
 	# Start the combat
-	combat_manager.start_combat()
+	#combat_manager.start_combat()
 
 	return combat_scene
 

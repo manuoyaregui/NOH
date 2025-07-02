@@ -50,8 +50,7 @@ static func create_enemy(enemy_data: Resource) -> Node:
 	entity.ai_profile = (
 		enemy_data.ai_profile if enemy_data.has_method("ai_profile") else null
 	)
-	entity.ai_behavior = null
-	# Replace with AIFactory.create_behavior(enemy_data.ai_type) when available
+	entity.ai_behavior = AIBehavior.new()
 	entity.difficulty_rating = (
 		enemy_data.difficulty_rating
 		if enemy_data.has_method("difficulty_rating")

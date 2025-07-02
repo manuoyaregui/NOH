@@ -31,16 +31,12 @@ func _ready():
 	if stats == null:
 		stats = CharacterStats.new()
 
-	var name_label = get_node_or_null("PlayerSprite/EntityName")
-	if name_label:
-		name_label.text = entity_name
-		name_label.visible = not is_player
-
 
 func take_damage(amount: int) -> void:
-	var final_damage = _calculate_final_damage(amount)
-	current_health = max(0, current_health - final_damage)
+	current_health = max(0, current_health - amount)
 	health_changed.emit(current_health, max_health)
+
+	print("final_damage --> ", amount)
 
 	if current_health <= 0:
 		entity_died.emit(self)
