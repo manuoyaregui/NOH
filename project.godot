@@ -14,6 +14,14 @@ config/name="No One's Heart"
 run/main_scene="res://scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.4")
 
+[autoload]
+
+CyclopsAutoload="*res://addons/cyclops_level_builder/cyclops_global_scene.tscn"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/asset_placer_with_physics/plugin.cfg")
+
 [importer_defaults]
 
 texture={

@@ -1,9 +1,7 @@
 class_name MainMenu
 extends Control
 
-const IDLE_SPRITE = preload(
-	"res://assets/prototyping/FREE_Samurai 2D Pixel Art v1.2/Sprites/IDLE.png"
-)
+const SAMURAI_SPRITE_FRAMES = preload("res://assets/sprites/SamuraiSF.tres")
 
 @onready var start_combat_button: Button = $VBoxContainer/StartCombatButton
 
@@ -49,30 +47,11 @@ func _create_test_combat() -> Node:
 	player_data.entity_name = "Test Player"
 	player_data.max_health = 100
 	player_data.current_health = 100
-	player_data.experience_level = 1
 	player_data.combat_position = Vector3(-0.5, 0.0, 0.333)
 	player_data.flip_horizontal = false
 
-	# Create sprite frames for player
-	var player_sprite_frames = SpriteFrames.new()
-
-	# Configure idle animation with multiple frames
-	player_sprite_frames.add_animation("idle")
-	player_sprite_frames.set_animation_speed("idle", 10.0)  # 10 FPS
-	player_sprite_frames.set_animation_loop("idle", true)  # Loop enabled
-
-	# Add frames for idle animation (assuming 4 frames horizontally)
-	var frame_width = 96
-	var frame_height = 96
-	var total_frames = 10  # Typical idle animation frames
-
-	for i in range(total_frames):
-		var idle_atlas = AtlasTexture.new()
-		idle_atlas.atlas = IDLE_SPRITE
-		idle_atlas.region = Rect2(i * frame_width, 0, frame_width, frame_height)
-		player_sprite_frames.add_frame("idle", idle_atlas)
-
-	player_data.sprite_frames = player_sprite_frames
+	# Use SamuraiSF.tres for player sprite frames
+	player_data.sprite_frames = SAMURAI_SPRITE_FRAMES
 
 	# Create basic stats
 	var player_stats = CharacterStats.new()
@@ -90,28 +69,8 @@ func _create_test_combat() -> Node:
 	enemy_data.difficulty_rating = 1
 	enemy_data.region_affiliation = "test"
 
-	# Create sprite frames for enemy (using different color modulation)
-	var enemy_sprite_frames = SpriteFrames.new()
-
-	# Configure idle animation with multiple frames
-	enemy_sprite_frames.add_animation("idle")
-	enemy_sprite_frames.set_animation_speed("idle", 10.0)  # 10 FPS
-	enemy_sprite_frames.set_animation_loop("idle", true)  # Loop enabled
-
-	# Add frames for idle animation (assuming 4 frames horizontally)
-	var enemy_frame_width = 96
-	var enemy_frame_height = 96
-	var enemy_total_frames = 10  # Typical idle animation frames
-
-	for i in range(enemy_total_frames):
-		var enemy_idle_atlas = AtlasTexture.new()
-		enemy_idle_atlas.atlas = IDLE_SPRITE
-		enemy_idle_atlas.region = Rect2(
-			i * enemy_frame_width, 0, enemy_frame_width, enemy_frame_height
-		)
-		enemy_sprite_frames.add_frame("idle", enemy_idle_atlas)
-
-	enemy_data.sprite_frames = enemy_sprite_frames
+	# Use SamuraiSF.tres for enemy sprite frames (with red color modulation)
+	enemy_data.sprite_frames = SAMURAI_SPRITE_FRAMES
 	enemy_data.color_modulation = Color.RED  # Make enemy red to distinguish
 
 	# Create basic enemy stats

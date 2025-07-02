@@ -1,23 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3voreb4hjkub"]
+[gd_scene load_steps=5 format=3 uid="uid://d3voreb4hjkub"]
 
-[ext_resource type="Texture2D" uid="uid://smddh825hbni" path="res://assets/prototyping/FREE_Samurai 2D Pixel Art v1.2/Sprites/IDLE.png" id="1_4r6s1"]
 [ext_resource type="Script" uid="uid://i2xlwewnf7so" path="res://scripts/entities/HealthBillboard.gd" id="2_2m65d"]
 [ext_resource type="Script" uid="uid://dhboukmmf25aj" path="res://scripts/entities/CombatEntity.gd" id="2_combat_entity"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_default"]
-atlas = ExtResource("1_4r6s1")
-region = Rect2(0, 0, 96, 96)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_default"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_default")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 10.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://cbs8rpddw1aqr" path="res://assets/sprites/SamuraiSF.tres" id="3_2m65d"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_combat_entity"]
 radius = 0.255455
@@ -51,7 +36,7 @@ billboard = 1
 shaded = true
 alpha_cut = 1
 texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_default")
+sprite_frames = ExtResource("3_2m65d")
 animation = &"idle"
 autoplay = "idle"
 
