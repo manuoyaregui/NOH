@@ -3,6 +3,7 @@ extends Resource
 
 enum MoveType { OFFENSIVE, DEFENSIVE, SPECIAL }
 
+@export var move_id: String  # Unique identifier in UPPER_SNAKE_CASE format
 @export var move_name: String
 @export var move_type: MoveType
 @export var accuracy: int = 100

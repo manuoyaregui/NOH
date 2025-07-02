@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="MoveData" load_steps=2 format=3]
 
 [sub_resource type="MoveData" id="MoveData_2"]
+move_id = "FIRE_STRIKE"
 move_name = "Fire Strike"
 move_type = 0
 damage = 25

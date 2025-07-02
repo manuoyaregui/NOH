@@ -9,7 +9,7 @@ extends Resource
 @export var position: Vector3 = Vector3.ZERO
 @export var flip_horizontal: bool = false
 @export var color_modulation: Color = Color.WHITE
-@export var moves: Array[String] = ["basic_attack", "defend"]
+@export var moves: Array[String] = ["BASIC_ATTACK", "DEFEND"]  # Use move IDs (UPPER_SNAKE_CASE)
 @export var ai_type: String = "AGGRESSIVE"
 @export var difficulty: int = 1
 

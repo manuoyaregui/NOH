@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="MoveData" load_steps=2 format=3]
 
 [sub_resource type="MoveData" id="MoveData_1"]
+move_id = "BASIC_ATTACK"
 move_name = "Basic Attack"
 move_type = 0
 damage = 15

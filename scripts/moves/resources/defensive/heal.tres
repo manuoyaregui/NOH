@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="MoveData" load_steps=2 format=3]
 
 [sub_resource type="MoveData" id="MoveData_4"]
+move_id = "HEAL"
 move_name = "Heal"
 move_type = 1
 damage = 0

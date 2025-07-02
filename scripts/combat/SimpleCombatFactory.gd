@@ -49,11 +49,7 @@ static func _convert_to_entity_data(
 	)
 	entity_data.stats = DefaultStats.get_default_stats()
 
-	var moves_data = []
-
-	for move_name in simple_config.moves:
-		moves_data.append(MovePresets.create_move(move_name))
-
+	var moves_data = MoveFactory.create_moves_from_ids(simple_config.moves)
 	entity_data.moves = moves_data
 
 	if not is_player:

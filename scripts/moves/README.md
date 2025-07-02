@@ -1,173 +1,151 @@
-# Move System Implementation
+# Sistema de Movimientos
 
-This directory contains the implementation of the move system for the combat mechanics, following the Factory Pattern as outlined in the design document.
+Este sistema maneja todos los movimientos del juego usando recursos de Godot (.tres files) para máxima flexibilidad y facilidad de edición.
 
-## Structure
+## Estructura
 
 ```
 scripts/moves/
-├── MoveData.gd              # Resource class for move data
-├── Move.gd                  # Base move class
-├── MoveFactory.gd           # Factory for creating moves
-├── MoveSystemTest.gd        # Test and example usage
-├── move_types/              # Specific move type implementations
-│   ├── OffensiveMove.gd     # Offensive moves (damage)
-│   ├── DefensiveMove.gd     # Defensive moves (defense/healing)
-│   └── SpecialMove.gd       # Special moves (unique effects)
-└── resources/               # Move data resources
-    ├── offensive/           # Offensive move resources
-    ├── defensive/           # Defensive move resources
-    └── special/             # Special move resources
+├── Move.gd                    # Clase base para todos los movimientos
+├── MoveData.gd                # Recurso que define los datos de un movimiento
+├── MoveFactory.gd             # Factory para crear movimientos desde recursos
+├── move_types/                # Implementaciones específicas por tipo
+│   ├── OffensiveMove.gd
+│   ├── DefensiveMove.gd
+│   └── SpecialMove.gd
+└── resources/                 # Recursos de movimientos (.tres files)
+    ├── offensive/
+    │   ├── basic_attack.tres
+    │   └── fire_strike.tres
+    ├── defensive/
+    │   ├── defend.tres
+    │   └── heal.tres
+    └── special/
+        └── void_pull.tres
 ```
 
-## Key Components
+## Cómo crear un nuevo movimiento
 
-### MoveData
+### 1. Crear el recurso (.tres file)
 
-Resource class that defines the structure for move data:
+1. En Godot Editor, ve a `scripts/moves/resources/[tipo]/`
+2. Click derecho → New Resource → MoveData
+3. Configura los campos:
+   - **move_id**: Identificador único en formato UPPER_SNAKE_CASE (ej: "FIRE_STRIKE")
+   - **move_name**: Nombre del movimiento para mostrar
+   - **move_type**: OFFENSIVE (0), DEFENSIVE (1), SPECIAL (2)
+   - **damage**: Daño base (solo para ofensivos)
+   - **defense**: Defensa base (solo para defensivos)
+   - **accuracy**: Precisión (0-100)
+   - **special_effects**: Array de efectos especiales
+   - **animation_name**: Nombre de la animación
+   - **cooldown_turns**: Turnos de cooldown
+   - **target_type**: "SINGLE", "ALL", "SELF"
 
-- `move_name`: Display name of the move
-- `move_type`: Type of move (OFFENSIVE, DEFENSIVE, SPECIAL)
+### 2. Guardar el recurso
 
-- `damage`: Base damage for offensive moves
-- `defense`: Defense bonus for defensive moves
-- `special_effects`: Array of special effect strings
-- `animation_name`: Animation to play when using the move
-- `cooldown_turns`: Number of turns before the move can be used again
-- `target_type`: Target type (SINGLE, ALL, SELF)
+Guarda el archivo con el nombre en formato snake_case:
 
-### Move (Base Class)
+- `basic_attack.tres`
+- `fire_strike.tres`
+- `void_pull.tres`
 
-Base class for all moves with common functionality:
-
-- Cooldown management
-- Move validation
-- Effect application
-- Move execution logic
-
-### Move Types
-
-#### OffensiveMove
-
-- Applies damage to targets
-- Supports special effects: BURN, STUN, BLEED, CRITICAL, PIERCE
-- Calculates final damage with attack bonuses
-
-#### DefensiveMove
-
-- Provides defense buffs
-- Supports special effects: HEAL, CLEANSE, SHIELD, REFLECT, COUNTER
-- Can heal the caster
-
-#### SpecialMove
-
-- Unique effects and interactions
-- Supports complex effects: LIFESTEAL, ENERGY_DRAIN, SWAP_STATS, MIRROR, TIME_WARP, REALITY_SHIFT, VOID_PULL, MEMORY_ERASE, PSYCHIC_LINK
-
-### MoveFactory
-
-Factory class that creates moves based on MoveData:
-
-- `create_moves()`: Creates multiple moves from MoveData array
-- `create_default_moves()`: Creates basic moves for fallback
-- `create_move_from_resource()`: Creates move from resource file
-- `create_move_by_name()`: Creates move by searching resources
-
-## Usage Examples
-
-### Creating Moves from Resources
+### 3. Usar el movimiento
 
 ```gdscript
-# Create a specific move
-var fire_strike = MoveFactory.create_move_from_resource("res://scripts/moves/resources/offensive/fire_strike.tres")
+# Crear movimiento desde ID (recomendado)
+var move = MoveFactory.create_move_by_id("FIRE_STRIKE")
 
-# Create moves for an entity
-var player_moves = MoveSystemTest.create_player_moves()
+# Crear múltiples movimientos desde IDs
+var moves = MoveFactory.create_moves_from_ids(["BASIC_ATTACK", "DEFEND", "HEAL"])
+
+# Crear desde recurso directo
+var move = MoveFactory.create_move_from_resource("res://scripts/moves/resources/offensive/fire_strike.tres")
+
+# Crear desde nombre (legacy, no recomendado)
+var move = MoveFactory.create_move_by_name("Fire Strike")
 ```
 
-### Using Moves in Combat
+## Tipos de Movimientos
+
+### Offensive
+
+- **Propósito**: Causar daño al enemigo
+- **Campo principal**: `damage`
+- **Ejemplos**: BASIC_ATTACK, FIRE_STRIKE
+
+### Defensive
+
+- **Propósito**: Proteger o curar
+- **Campo principal**: `defense` o efectos de curación
+- **Ejemplos**: DEFEND, HEAL
+
+### Special
+
+- **Propósito**: Efectos únicos y especiales
+- **Campo principal**: `special_effects`
+- **Ejemplos**: VOID_PULL
+
+## Efectos Especiales
+
+Los efectos especiales se definen como strings en el array `special_effects`:
+
+- `"BURN"`: Quema al objetivo
+- `"HEAL"`: Cura al usuario
+- `"VOID_PULL"`: Atrae al objetivo
+
+## Convenciones de Nomenclatura
+
+- **move_id**: UPPER_SNAKE_CASE (ej: `"FIRE_STRIKE"`)
+- **Archivos**: snake_case (ej: `fire_strike.tres`)
+- **Nombres**: Title Case (ej: "Fire Strike")
+- **Animaciones**: snake_case (ej: `fire_attack`)
+- **Efectos**: UPPER_SNAKE_CASE (ej: `"BURN"`)
+
+## IDs de Movimientos Disponibles
+
+### Offensive
+
+- `BASIC_ATTACK`: Ataque básico
+- `FIRE_STRIKE`: Golpe de fuego con efecto quemadura
+
+### Defensive
+
+- `DEFEND`: Defensa básica
+- `HEAL`: Curación
+
+### Special
+
+- `VOID_PULL`: Atracción del vacío
+
+## Ventajas del Sistema de Recursos
+
+1. **Editor de Godot**: Edición visual de movimientos
+2. **Versionado**: Los archivos .tres se versionan mejor
+3. **Escalabilidad**: Fácil agregar nuevos movimientos
+4. **Consistencia**: Un solo sistema para todos los movimientos
+5. **Mantenimiento**: Cambios sin tocar código
+6. **Identificación única**: IDs únicos para referencias consistentes
+
+## Uso en Configuraciones
+
+Para usar movimientos en configuraciones de entidades:
 
 ```gdscript
-# Check if move can be used
-if move.can_use(entity):
-    # Execute the move
-    move.execute(caster, target)
+# En SimpleEntityConfig
+var config = SimpleEntityConfig.new()
+config.moves = ["BASIC_ATTACK", "DEFEND", "HEAL"]  # Usar IDs
 ```
 
-### Creating Custom Moves
+## Funciones Útiles
 
 ```gdscript
-# Create move data programmatically
-var custom_move_data = MoveData.new()
-custom_move_data.move_name = "Custom Attack"
-custom_move_data.move_type = MoveData.MoveType.OFFENSIVE
-custom_move_data.damage = 20
+# Obtener lista de IDs disponibles
+var available_ids = MoveFactory.get_available_move_ids()
 
-custom_move_data.special_effects = ["BURN"]
+# Obtener lista de nombres disponibles
+var available_names = MoveFactory.get_available_moves()
 
-# Create the move
-var custom_move = MoveFactory._create_move_by_type(custom_move_data)
+# Crear movimientos por defecto
+var default_moves = MoveFactory.create_default_moves()
 ```
-
-## Special Effects
-
-### Offensive Effects
-
-- **BURN**: Applies burn status for 3 turns
-- **STUN**: Applies stun status for 1 turn
-- **BLEED**: Applies bleed status for 2 turns
-- **CRITICAL**: Critical hit (damage calculation)
-- **PIERCE**: Ignores defense (damage calculation)
-
-### Defensive Effects
-
-- **HEAL**: Heals caster for half the defense value
-- **CLEANSE**: Removes all status effects
-- **SHIELD**: Applies shield status for 2 turns
-- **REFLECT**: Applies reflect status for 1 turn
-- **COUNTER**: Applies counter status for 1 turn
-
-### Special Effects
-
-- **LIFESTEAL**: Heals caster for half the damage dealt
-
-- **SWAP_STATS**: Temporarily swaps attack/defense stats
-- **MIRROR**: Copies target's last used move
-- **TIME_WARP**: Resets all cooldowns
-- **REALITY_SHIFT**: Changes target's move type temporarily
-- **VOID_PULL**: Forces target to use specific move
-- **MEMORY_ERASE**: Removes target's last used move
-- **PSYCHIC_LINK**: Shares damage between caster and target
-
-## Testing
-
-Run the test system to verify functionality:
-
-```gdscript
-MoveSystemTest.test_move_system()
-```
-
-This will test:
-
-1. Creating moves from resources
-2. Creating default moves
-3. Move properties and data
-4. Cooldown system functionality
-
-## Integration with Combat System
-
-The move system integrates with the CombatEntity class:
-
-- Moves are stored in the `moves` array
-- `get_available_moves()` returns moves that can be used
-- `use_move()` executes a move
-- `update_turn()` updates cooldowns and effects
-
-## Future Extensions
-
-The system is designed to be easily extensible:
-
-- New move types can be added by extending the Move class
-- New special effects can be added to existing move types
-- Resource-based configuration allows easy balancing
-- Factory pattern supports dynamic move creation
