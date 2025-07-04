@@ -39,15 +39,12 @@ func _on_start_combat_button_pressed():
 
 
 func _create_test_combat() -> Node:
-	# Create a basic test combat configuration
-	var config = CombatConfig.new()
-
 	# Create basic player data
 	var player_data = PlayerData.new()
 	player_data.entity_name = "Test Player"
 	player_data.max_health = 100
 	player_data.current_health = 100
-	player_data.combat_position = Vector3(-0.5, 0.0, 0.333)
+	player_data.combat_position = Vector3.ZERO
 	player_data.flip_horizontal = false
 
 	# Use SamuraiSF.tres for player sprite frames
@@ -59,49 +56,17 @@ func _create_test_combat() -> Node:
 	player_stats.defense_bonus = 3
 	player_data.stats = player_stats
 
-	# Create basic enemy data
-	var enemy_data = EnemyData.new()
-	enemy_data.entity_name = "Test Enemy"
-	enemy_data.max_health = 80
-	enemy_data.combat_position = Vector3(0.5, 0.0, -0.333)
-	enemy_data.flip_horizontal = true
-	enemy_data.ai_type = "AGGRESSIVE"
-	enemy_data.difficulty_rating = 1
-	enemy_data.region_affiliation = "test"
-
-	# Use SamuraiSF.tres for enemy sprite frames (with red color modulation)
-	enemy_data.sprite_frames = SAMURAI_SPRITE_FRAMES
-	enemy_data.color_modulation = Color.RED  # Make enemy red to distinguish
-
-	# Create basic enemy stats
-	var enemy_stats = CharacterStats.new()
-	enemy_stats.attack_bonus = 3
-	enemy_stats.defense_bonus = 2
-	enemy_data.stats = enemy_stats
-
 	# Set up basic moves (will be created by MoveFactory)
-	var basic_attack = MoveData.new()
-	basic_attack.move_name = "Basic Attack"
-	basic_attack.move_type = MoveData.MoveType.OFFENSIVE
-	basic_attack.damage = 15
+	var basic_attack = MoveFactory.create_move_by_id("BASIC_ATTACK")
 
-	var defend = MoveData.new()
-	defend.move_name = "Defend"
-	defend.move_type = MoveData.MoveType.DEFENSIVE
-	defend.defense = 10
+	var defend = MoveFactory.create_move_by_id("DEFEND")
 
 	player_data.moves = [basic_attack, defend] as Array[MoveData]
-	enemy_data.moves = [basic_attack, defend] as Array[MoveData]
-
-	# Configure combat settings
-	config.player_data = player_data
-	config.enemy_data = enemy_data
-	config.combat_background = "default"
-	config.music_track = "combat_default"
-	config.lighting_setting = "default"
 
 	# Create combat scene using Factory
-	return CombatFactory.create_combat_scene(config)
+	return CombatPresetFactory.create_specific_combat(
+		player_data, "tutorial_combat"
+	)
 
 
 func _on_combat_ended(victory: bool, rewards: Array = []):

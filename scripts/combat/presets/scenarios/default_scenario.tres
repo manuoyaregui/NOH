@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ScenarioPreset" load_steps=2 format=3 uid="uid://default_scenario_preset"]
+
+[ext_resource type="Script" path="res://scripts/combat/presets/scenarios/ScenarioPreset.gd" id="1_scenario"]
+
+[resource]
+script = ExtResource("1_scenario")
+preset_name = "default_scenario"
+description = "Default combat scenario"
+background_color = Color(0.1, 0.1, 0.1, 1)
+lighting_intensity = 1.0
+player_position = Vector3(-2, 0, 0)
+enemy_position = Vector3(2, 0, 0)
+time_of_day = "day"
+victory_rewards = ["experience", "gold"]

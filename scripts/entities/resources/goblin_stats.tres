@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://co3ul2s6tqbmp"]
+
+[ext_resource type="Script" uid="uid://cfvc6ed5u260k" path="res://scripts/entities/CharacterStats.gd" id="1_cir2g"]
+[ext_resource type="SpriteFrames" uid="uid://cbs8rpddw1aqr" path="res://assets/sprites/SamuraiSF.tres" id="2_bj3md"]
+
+[resource]
+script = ExtResource("1_cir2g")
+attack_bonus = 2
+defense_bonus = 1
+speed_bonus = 8
+sprite_frame = ExtResource("2_bj3md")
+metadata/_custom_type_script = "uid://cfvc6ed5u260k"

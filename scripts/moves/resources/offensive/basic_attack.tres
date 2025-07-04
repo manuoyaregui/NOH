@@ -1,13 +1,16 @@
-[gd_resource type="Resource" script_class="MoveData" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="MoveData" load_steps=2 format=3 uid="uid://db0go4qbtexe5"]
 
-[sub_resource type="MoveData" id="MoveData_1"]
+[ext_resource type="Script" uid="uid://b8cp5cvp6esve" path="res://scripts/moves/MoveData.gd" id="1_0"]
+
+[resource]
+script = ExtResource("1_0")
 move_id = "BASIC_ATTACK"
 move_name = "Basic Attack"
 move_type = 0
+accuracy = 100
 damage = 15
 defense = 0
-accuracy = 100
-special_effects = []
+special_effects = Array[String]([])
 animation_name = "attack"
 cooldown_turns = 0
 target_type = "SINGLE"

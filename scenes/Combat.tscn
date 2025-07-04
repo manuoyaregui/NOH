@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhd26scwo1d3w"]
+[gd_scene load_steps=9 format=3 uid="uid://bhd26scwo1d3w"]
 
 [ext_resource type="PackedScene" uid="uid://ojye6tam5rjm" path="res://scenes/CombatUI.tscn" id="1_hrlpu"]
 [ext_resource type="Texture2D" uid="uid://82s2p7jhu4sa" path="res://assets/prototyping/3dModeling/PNG/Purple/texture_01.png" id="1_k070p"]
@@ -12,6 +12,8 @@ uv1_scale = Vector3(5, 5, 5)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_acsaf"]
 size = Vector2(2.5, 2.5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tp2sa"]
 
 [node name="Combat" type="Node3D"]
 script = ExtResource("3_combat_scene")
@@ -40,3 +42,17 @@ light_energy = 1.96
 shadow_enabled = true
 shadow_reverse_cull_face = true
 shadow_blur = 0.0
+
+[node name="PlayerPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.347, 0, 0.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerPosition"]
+transform = Transform3D(0.123533, 0, 0, 0, 0.00725191, 0, 0, 0, 0.129662, 0, 0.014, 0)
+mesh = SubResource("CylinderMesh_tp2sa")
+
+[node name="EnemyPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.333, 0, -0.07)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EnemyPosition"]
+transform = Transform3D(0.123533, 0, 0, 0, 0.00725191, 0, 0, 0, 0.129662, 0, 0.014, 0)
+mesh = SubResource("CylinderMesh_tp2sa")

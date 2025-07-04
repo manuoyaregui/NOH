@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CombatPreset" load_steps=2 format=3 uid="uid://tutorial_combat_preset"]
+
+[ext_resource type="Script" path="res://scripts/combat/presets/CombatPreset.gd" id="1_cpreset"]
+
+[resource]
+script = ExtResource("1_cpreset")
+preset_name = "tutorial_combat"
+description = "Tutorial battle against a weak goblin"
+enemy_preset = "goblin"
+scenario_preset = "forest"
+player_override_moves = ["basic_attack", "defend"]
+victory_rewards = ["xp", "potion"]
+custom_player_position = Vector3(-2, 0, 0)
+custom_enemy_position = Vector3(2, 0, 0)
+background_color = Color(0.2, 0.3, 0.1, 1)

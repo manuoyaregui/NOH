@@ -8,7 +8,7 @@ static func create_player(player_data: Resource) -> Node:
 	var entity = combat_entity_scene.instantiate()
 
 	# Configure sprite and animations
-	var sprite = entity.get_node("PlayerSprite")
+	var sprite = entity.get_node("AnimatedSprite3D")
 	sprite.sprite_frames = player_data.sprite_frames
 	sprite.modulate = player_data.color_modulation
 	sprite.flip_h = player_data.flip_horizontal
@@ -26,6 +26,8 @@ static func create_player(player_data: Resource) -> Node:
 	entity.is_player = true
 	entity.entity_name = player_data.entity_name
 
+	entity.name = "Player"
+
 	return entity
 
 
@@ -33,10 +35,10 @@ static func create_enemy(enemy_data: Resource) -> Node:
 	var entity = combat_entity_scene.instantiate()
 
 	# Configure sprite and animations
-	var sprite = entity.get_node("PlayerSprite")
-	sprite.sprite_frames = enemy_data.sprite_frames
+	var sprite = entity.get_node("AnimatedSprite3D")
 	sprite.modulate = enemy_data.color_modulation
 	sprite.flip_h = enemy_data.flip_horizontal
+	sprite.sprite_frames = enemy_data.sprite_frames
 	sprite.play("idle")  # Ensure animation is playing
 
 	# Configure stats
@@ -67,5 +69,7 @@ static func create_enemy(enemy_data: Resource) -> Node:
 	# Set as enemy
 	entity.is_player = false
 	entity.entity_name = enemy_data.entity_name
+
+	entity.name = "Enemy"
 
 	return entity

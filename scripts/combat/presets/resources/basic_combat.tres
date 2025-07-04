@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CombatPreset" load_steps=2 format=3 uid="uid://bqxvn8yqxqxqx"]
+
+[ext_resource type="Script" path="res://scripts/combat/presets/CombatPreset.gd" id="1_0xqxq"]
+
+[resource]
+script = ExtResource("1_0xqxq")
+preset_name = "basic_combat"
+description = "A basic combat encounter for testing"
+background_color = Color(0.1, 0.1, 0.1, 1)
+victory_rewards = ["experience", "gold"]
+custom_player_position = Vector3(-2, 0, 0)
+custom_enemy_position = Vector3(2, 0, 0)

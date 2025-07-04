@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CombatPreset" load_steps=2 format=3 uid="uid://advanced_combat_preset"]
+
+[ext_resource type="Script" path="res://scripts/combat/presets/CombatPreset.gd" id="1_0xqxq"]
+
+[resource]
+script = ExtResource("1_0xqxq")
+preset_name = "advanced_combat"
+description = "An advanced combat encounter with custom settings"
+background_color = Color(0.2, 0.0, 0.1, 1)
+victory_rewards = ["experience", "gold", "rare_item"]
+custom_player_position = Vector3(-3, 0, 0)
+custom_enemy_position = Vector3(3, 0, 0)
+custom_player_health = 120
+custom_enemy_health = 150

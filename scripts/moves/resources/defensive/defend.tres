@@ -1,12 +1,16 @@
-[gd_resource type="Resource" script_class="MoveData" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="MoveData" load_steps=2 format=3 uid="uid://bf276i3wyon3f"]
 
-[sub_resource type="MoveData" id="MoveData_3"]
+[ext_resource type="Script" uid="uid://b8cp5cvp6esve" path="res://scripts/moves/MoveData.gd" id="1_es3p8"]
+
+[resource]
+script = ExtResource("1_es3p8")
 move_id = "DEFEND"
 move_name = "Defend"
 move_type = 1
+accuracy = 100
 damage = 0
 defense = 10
-special_effects = []
+special_effects = Array[String]([])
 animation_name = "defend"
 cooldown_turns = 0
 target_type = "SELF"
