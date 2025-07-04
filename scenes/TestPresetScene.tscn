@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dn8vfvg636ea7"]
-
-[ext_resource type="Script" uid="uid://bgaf0d1swsf0" path="res://scripts/combat/presets/TestPhase3.gd" id="1_w067v"]
-
-[node name="TestPresetScene" type="Node"]
-script = ExtResource("1_w067v")
