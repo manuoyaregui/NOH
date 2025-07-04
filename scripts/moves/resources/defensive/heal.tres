@@ -1,12 +1,17 @@
-[gd_resource type="Resource" script_class="MoveData" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="MoveData" load_steps=2 format=3 uid="uid://dy8khgtrnsmn0"]
 
-[sub_resource type="MoveData" id="MoveData_4"]
+[ext_resource type="Script" uid="uid://b8cp5cvp6esve" path="res://scripts/moves/MoveData.gd" id="1_es3p8"]
+
+[resource]
+script = ExtResource("1_es3p8")
 move_id = "HEAL"
-move_name = "Heal"
+move_name = "heal"
 move_type = 1
+accuracy = 100
 damage = 0
-defense = 5
-special_effects = ["HEAL"]
+defense = 0
+special_effects = Array[String](["HEAL"])
 animation_name = "heal"
 cooldown_turns = 3
 target_type = "SELF"
+metadata/_custom_type_script = "uid://b8cp5cvp6esve"
