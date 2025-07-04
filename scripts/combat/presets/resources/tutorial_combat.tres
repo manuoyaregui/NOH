@@ -1,15 +1,20 @@
-[gd_resource type="Resource" script_class="CombatPreset" load_steps=2 format=3 uid="uid://tutorial_combat_preset"]
+[gd_resource type="Resource" script_class="CombatPreset" load_steps=4 format=3 uid="uid://5fyobhn2bm0"]
 
-[ext_resource type="Script" path="res://scripts/combat/presets/CombatPreset.gd" id="1_cpreset"]
+[ext_resource type="Script" uid="uid://cit0mlkvdg5bj" path="res://scripts/combat/presets/CombatPreset.gd" id="1_cpreset"]
+[ext_resource type="Resource" uid="uid://bf4kv32606pwg" path="res://scripts/combat/presets/enemies/goblin.tres" id="1_e51es"]
+[ext_resource type="Resource" path="res://scripts/combat/presets/scenarios/default_scenario.tres" id="2_q5lsn"]
 
 [resource]
 script = ExtResource("1_cpreset")
 preset_name = "tutorial_combat"
 description = "Tutorial battle against a weak goblin"
-enemy_preset = "goblin"
-scenario_preset = "forest"
-player_override_moves = ["basic_attack", "defend"]
-victory_rewards = ["xp", "potion"]
-custom_player_position = Vector3(-2, 0, 0)
+name = "tutorial_combat"
+enemy_preset = ExtResource("1_e51es")
+scenario_preset = ExtResource("2_q5lsn")
+player_override_moves = Array[String](["basic_attack", "defend"])
+custom_player_position = Vector3(0, 0, 0)
+custom_player_health = 0
 custom_enemy_position = Vector3(2, 0, 0)
+custom_enemy_health = 0
+victory_rewards = ["xp", "potion"]
 background_color = Color(0.2, 0.3, 0.1, 1)

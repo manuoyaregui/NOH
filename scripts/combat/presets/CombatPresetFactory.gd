@@ -175,12 +175,14 @@ static func create_specific_combat(
 		push_error("CombatPreset not found: " + preset_name)
 		return null
 
-	var enemy_preset = _load_enemy_preset(preset.enemy_preset)
+	var enemy_preset = _load_enemy_preset(preset.enemy_preset.preset_name)
 	if not enemy_preset:
 		push_error("Enemy preset not found: " + preset.enemy_preset)
 		return null
 
-	var scenario_preset = _load_scenario_preset(preset.scenario_preset)
+	var scenario_preset = _load_scenario_preset(
+		preset.scenario_preset.preset_name
+	)
 	if not scenario_preset:
 		push_error("Scenario preset not found: " + preset.scenario_preset)
 		return null
