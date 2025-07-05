@@ -19,6 +19,11 @@ static func create_player(player_data: Resource) -> Node:
 	entity.max_health = player_data.max_health
 	entity.current_health = player_data.current_health
 
+	# Convert MoveData resources to Move objects
+	if player_data.has_method("get") and player_data.get("moves") != null:
+		var move_data_list = player_data.moves
+		entity.moves = MoveFactory.create_moves(move_data_list)
+
 	# Configure position and transform
 	entity.position = player_data.combat_position
 
@@ -45,6 +50,11 @@ static func create_enemy(enemy_data: Resource) -> Node:
 	entity.stats = enemy_data.stats.duplicate()
 	entity.max_health = enemy_data.max_health
 	entity.current_health = enemy_data.max_health  # Enemies start at full health
+
+	# Convert MoveData resources to Move objects
+	if enemy_data.has_method("get") and enemy_data.get("moves") != null:
+		var move_data_list = enemy_data.moves
+		entity.moves = MoveFactory.create_moves(move_data_list)
 
 	# Configure AI
 	# TODO: Import and use AIFactory for ai_profile and ai_behavior

@@ -34,7 +34,6 @@ func _on_start_combat_button_pressed():
 		else:
 			# Fallback: return to menu after a delay
 			await get_tree().create_timer(5.0).timeout
-			print("paso por aca")
 			_return_to_menu()
 
 
@@ -58,10 +57,12 @@ func _create_test_combat() -> Node:
 
 	# Set up basic moves (will be created by MoveFactory)
 	var basic_attack = MoveFactory.create_move_by_id("BASIC_ATTACK")
-
 	var defend = MoveFactory.create_move_by_id("DEFEND")
 
-	player_data.moves = [basic_attack, defend] as Array[MoveData]
+	# Store MoveData resources instead of Move objects
+	player_data.moves = (
+		[basic_attack.move_data, defend.move_data] as Array[MoveData]
+	)
 
 	# Create combat scene using Factory
 	return CombatPresetFactory.create_specific_combat(
@@ -79,10 +80,13 @@ func _on_combat_ended(victory: bool, rewards: Array = []):
 
 func _return_to_menu():
 	print("returning to main menu")
+
+	await get_tree().create_timer(4.0).timeout
 	# Remove combat scene if it exists
-	var combat_scenes = get_tree().get_nodes_in_group("combat_scene")
-	for scene in combat_scenes:
-		scene.queue_free()
+	var combat_scene = get_node_or_null("Combat")
+
+	if combat_scene:
+		combat_scene.queue_free()
 
 	# Show main menu again
 	visible = true
