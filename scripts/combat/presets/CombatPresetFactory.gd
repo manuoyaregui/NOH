@@ -241,21 +241,4 @@ static func create_specific_combat(
 	else:
 		_apply_scenario_effects(combat_scene, scenario_preset)
 
-	# Obtener nodos de posición de referencia
-	var player_position_node = combat_scene.get_node_or_null("PlayerPosition")
-	var enemy_position_node = combat_scene.get_node_or_null("EnemyPosition")
-
-	print("Position player", player_position_node.global_transform.origin)
-
-	# Asignar posiciones si existen los nodos
-	if player_position_node:
-		player.global_transform.origin = (
-			player_position_node.global_transform.origin
-		)
-
-	if enemy_position_node:
-		enemy.global_transform.origin = (
-			enemy_position_node.global_transform.origin
-		)
-
 	return combat_scene

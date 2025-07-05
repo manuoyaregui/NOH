@@ -21,10 +21,17 @@ var combat_state: String = "idle"  # idle, active, ended
 var victory_rewards: Array = []
 var waiting_for_player_input: bool = false
 
+# Move effect processor for handling move execution
+var move_effect_processor: MoveEffectProcessor
+
 @onready var combat_ui = get_parent().get_node("CombatUI")
 
 
 func _ready():
+	# Initialize move effect processor
+	move_effect_processor = MoveEffectProcessor.new()
+	move_effect_processor.effect_processed.connect(_on_effect_processed)
+
 	# Add to combat scene group for easy access
 	add_to_group("combat_scene")
 
@@ -170,38 +177,8 @@ func _on_entity_died(_entity: CombatEntity):
 
 
 func _on_move_executed(move: Move, caster: CombatEntity, target: CombatEntity):
-	# Handle move execution effects
-	var move_name = move.get_display_name()
-
-	if move is OffensiveMove:
-		# Calcular el daño real que se infligió, considerando defensa y efectos
-		var raw_damage = move.calculate_damage(caster, target)
-		var real_damage = target._calculate_final_damage(raw_damage)
-		combat_ui.add_log_message(
-			(
-				"%s deals %d damage to %s!"
-				% [caster.entity_name, real_damage, target.entity_name]
-			)
-		)
-
-	elif move is DefensiveMove:
-		if move.move_type == "heal":
-			var heal_amount = move.calculate_heal(caster)
-			caster.heal(heal_amount)
-			combat_ui.add_log_message(
-				"%s heals for %d HP!" % [caster.entity_name, heal_amount]
-			)
-		elif move.move_type == "defend":
-			var defense_amount = move.calculate_defense(caster)
-			caster.add_defense_buff(defense_amount, 1)
-			combat_ui.add_log_message(
-				"%s raises defense!" % [caster.entity_name]
-			)
-
-	elif move is SpecialMove:
-		combat_ui.add_log_message(
-			"%s uses special move: %s!" % [caster.entity_name, move_name]
-		)
+	# Process move effects through the processor
+	move_effect_processor.process_move_effect(move, caster, target)
 
 	# Update health displays
 	_update_health_billboards(player, player.current_health)
@@ -233,9 +210,6 @@ func _on_move_selected(move: Move):
 	combat_ui.add_log_message("You use: %s" % move.get_display_name())
 	player.use_move(move, enemy)
 
-	# Small delay for animation
-	await get_tree().create_timer(0.5).timeout
-
 	# End turn
 	end_turn()
 
@@ -252,3 +226,8 @@ func _update_health_billboards(entity: CombatEntity, new_value: int):
 func set_entity_name(entity: CombatEntity, new_name: String):
 	# Aquí se asignaría el nombre real a la entidad
 	emit_signal("entity_name_changed", entity, new_name)
+
+
+func _on_effect_processed(effect_data: Dictionary):
+	# Handle processed effects and add appropriate messages
+	combat_ui.add_log_message(effect_data.get("message", "Move executed!"))

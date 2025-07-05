@@ -1,6 +1,10 @@
 class_name CombatEntity
 extends Node3D
 
+const AnimationController = preload(
+	"res://scripts/entities/AnimationController.gd"
+)
+
 signal move_executed(move: Move, caster: CombatEntity, target: CombatEntity)
 signal health_changed(current_health: int, max_health: int)
 signal entity_died(entity: CombatEntity)
@@ -24,12 +28,18 @@ var ai_behavior: AIBehavior
 var difficulty_rating: int = 1
 var region_affiliation: String = ""
 
+# Animation controller
+var animation_controller: AnimationController
+
 
 func _ready():
 	current_health = max_health
 
 	if stats == null:
 		stats = CharacterStats.new()
+
+	# Initialize animation controller
+	animation_controller = AnimationController.new($AnimatedSprite3D)
 
 
 func take_damage(amount: int) -> void:
@@ -91,6 +101,14 @@ func get_available_moves() -> Array[Move]:
 func use_move(move: Move, target: CombatEntity) -> void:
 	if move.can_use(self):
 		last_used_move = move
+
+		# Reproducir animación basada en el tipo de movimiento
+		var anim_duration = animation_controller.play_move_animation(
+			move.move_data
+		)
+
+		await get_tree().create_timer(anim_duration).timeout
+
 		move.execute(self, target)
 
 

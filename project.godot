@@ -14,10 +14,6 @@ config/name="No One's Heart"
 run/main_scene="uid://djhkjftfsn3gj"
 config/features=PackedStringArray("4.4")
 
-[autoload]
-
-CyclopsAutoload="*res://addons/cyclops_level_builder/cyclops_global_scene.tscn"
-
 [editor_plugins]
 
 enabled=PackedStringArray()
